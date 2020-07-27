@@ -121,17 +121,49 @@
 
 
 
-# 2. 常用Benchmark DataSet
+# 2. 评价指标
 
-#### Public Datasets
+ OA (Overall Accuracy)：总体精度
+
+ mIoU (mean Intersection over Unionand)：平均交并比
+
+mAcc (mean class Accuracy)：平均类别精度
+
+MAP(mean Average Precision) : 平均精度均值 ,长用于3D点云实例分割。
+
+
+
+# 3. 常用Benchmark DataSet
+
+## Public Datasets
+
 - Semantic3D (ISPRS'17) [[paper]](https://www.ethz.ch/content/dam/ethz/special-interest/baug/igp/photogrammetry-remote-sensing-dam/documents/pdf/Papers/Hackel-etal-cmrt2017.pdf) [[project page]](http://www.semantic3d.net/)
-    - _semantic-8_ [[data]](http://www.semantic3d.net/view_dbase.php?chl=1#download) [[results]](http://www.semantic3d.net/view_results.php?chl=1)
-    - _reduced-8_ [[data]](http://www.semantic3d.net/view_dbase.php?chl=2#download) [[results]](http://www.semantic3d.net/view_results.php?chl=2)
+  - _semantic-8_ [[data]](http://www.semantic3d.net/view_dbase.php?chl=1#download) [[results]](http://www.semantic3d.net/view_results.php?chl=1)
+  - _reduced-8_ [[data]](http://www.semantic3d.net/view_dbase.php?chl=2#download) [[results]](http://www.semantic3d.net/view_results.php?chl=2)
 - S3DIS (CVPR'17) [[paper]](http://buildingparser.stanford.edu/images/3D_Semantic_Parsing.pdf) [[data]](https://docs.google.com/forms/d/e/1FAIpQLScDimvNMCGhy_rmBA2gHfDu3naktRm6A8BPwAWWDv-Uhm6Shw/viewform?c=0&w=1) [[project page]](http://buildingparser.stanford.edu/dataset.html#Download)
 - ScanNet (CVPR'17) [[paper]](https://arxiv.org/pdf/1702.04405) [[data]](https://github.com/ScanNet/ScanNet) [[project page]](http://www.scan-net.org/) [[results]](http://kaldir.vc.in.tum.de/scannet_benchmark/)  
 - NPM3D (IJRR'18) [[paper]](https://arxiv.org/pdf/1712.00032) [[data]](https://cloud.mines-paristech.fr/index.php/s/JhIxgyt0ALgRZ1O) [[project page]](http://npm3d.fr/) [[results]](http://npm3d.fr/paris-lille-3d) 
 - SemanticKITTI (ICCV'19) [[paper]](https://arxiv.org/pdf/1904.01416) [[data]](http://semantic-kitti.org/dataset.html#download) [[project page]](http://semantic-kitti.org/index.html) [[results]](https://competitions.codalab.org/competitions/20331#results)
 
-#### Benchmark Results
-![Segmentation](https://cdn.jsdelivr.net/gh/lizhangjie316/img/2020/20200727194837.png)
+![image-20200727195450821](https://cdn.jsdelivr.net/gh/lizhangjie316/img/2020/20200727195450.png)
+
+对于3D点云分割，这些数据集由不同类型的传感器获取，包括移动激光扫描仪(MLS)[15]、[34]、[36]、空中激光扫描仪(ALS)[33]、[38]、静态陆地激光扫描仪(TLS)[12]、RGBD相机[11]和其他3D扫描仪[10]。这些数据集可用于开发各种挑战的算法，包括相似干扰、形状不完整和类别不平衡。
+
+## Benchmark Results
+
+![image-20200727201714103](https://cdn.jsdelivr.net/gh/lizhangjie316/img/2020/20200727201714.png)
+
+
+
+# 4. 存在的问题
+
+1.  由于规则的数据表示，基于投影的方法和基于离散化的方法都可以利用其2D图像对应的成熟的网络体系结构。然而，基于投影的方法的主要局限性在于3D-2D投影造成的信息损失，而基于离散化的方法的主要瓶颈是分辨率的提高导致计算和存储开销的成倍增加。为此，建立在索引结构上的稀疏卷积将是一个可行的解决方案，值得进一步探索。
+2.  基于点的网络是研究最多的方法。然而，点表示自然没有显式的邻域信息，大多数现有的基于点的方法求助于昂贵的邻域搜索机制(例如，KNN[79]或Ball  Query[54])。这固有地限制了这些方法的效率，最近提出**的点-体素联合表示法**[256]将是一个有趣的进一步研究方向。
+3.  从不平衡数据中学习仍然是点云分割中的一个具有挑战性的问题。虽然有几种方法[65]、[203]、[205]取得了显著的整体表现，但它们在少数类别上的表现仍然有限。例如，RandLA-Net[206]在Semanti3D的Reduced-8子集上实现了76.0%的整体IOU，但在Hardscape类上的IOU非常低，只有41.1%。
+4.  现有的大多数方法[5]、[54]、[79]、[205]、[207]适用于小的点云(例如，具有4096个点的1m×1m)。在实际应用中，深度传感器获取的点云数据通常是巨大的、大规模的。因此，需要进一步研究大规模点云的高效分割问题。
+5.  一些工作[178]、[179]、[199]已经开始从动态点云中学习时空信息。期望时空信息能够帮助提高后续任务(如3D对象识别、分割和完成)的性能。
+
+
+
+---
 
