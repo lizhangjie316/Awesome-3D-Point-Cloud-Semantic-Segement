@@ -14,7 +14,7 @@
 
 
 
-TOC {:toc}
+- TOC {:toc}
 
 ---
 
