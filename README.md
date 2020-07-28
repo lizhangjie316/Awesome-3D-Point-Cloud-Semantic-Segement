@@ -26,6 +26,7 @@
   - [1.4.3 基于RNN的方法](#143-基于rnn的方法)
   - [1.4.4 基于图的方法](#144-基于图的方法)
   - [1.4.5 其它方法](#145-其它方法)
+- [3. 常用Benchmark DataSet](#3-常用Benchmark DataSet)
 - [2. 评价指标](#2-评价指标)
 	- [Public Datasets](#public-datasets)
 	- [Benchmark Results](#benchmark-results) 
@@ -194,4 +195,15 @@ MAP(mean Average Precision) : 平均精度均值 ,长用于3D点云实例分割�
 
 
 ---
+
+# 论文引用
+
+
+
+---
+
+# 参考文献
+
+1. [Deep Learning for 3D Point Clouds：A Survey_20200727版](https://github.com/lizhangjie316/3D-Point-Cloud-Semantic-Segement-Paper/blob/master/papers/Deep%20Learning%20for%203D%20Point%20Clouds%EF%BC%9AA%20Survey_20200727%E7%89%88.pdf)
+2. [SoTA-Point-Cloud](https://github.com/QingyongHu/SoTA-Point-Cloud)
 
