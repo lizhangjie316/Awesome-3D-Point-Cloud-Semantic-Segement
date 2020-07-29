@@ -26,7 +26,7 @@
   - [1.4.3 基于RNN的方法](#143-基于rnn的方法)
   - [1.4.4 基于图的方法](#144-基于图的方法)
   - [1.4.5 其它方法](#145-其它方法)
-- [3. 常用Benchmark DataSet](#3-常用Benchmark DataSet)
+- [3. 常用Benchmark DataSet](#3-常用benchmark-dataSet)
 - [2. 评价指标](#2-评价指标)
 	- [Public Datasets](#public-datasets)
 	- [Benchmark Results](#benchmark-results) 
@@ -173,8 +173,12 @@ MAP(mean Average Precision) : 平均精度均值 ,长用于3D点云实例分割�
   - _reduced-8_ [[data]](http://www.semantic3d.net/view_dbase.php?chl=2#download) [[results]](http://www.semantic3d.net/view_results.php?chl=2)
 - Paris-Lille-3D (IJRR'18) [[paper]](https://arxiv.org/pdf/1712.00032) [[data]](https://cloud.mines-paristech.fr/index.php/s/JhIxgyt0ALgRZ1O) [[project page]](http://npm3d.fr/) [[results]](http://npm3d.fr/paris-lille-3d) 
 - SemanticKITTI (ICCV'19) [[paper]](https://arxiv.org/pdf/1904.01416) [[data]](http://semantic-kitti.org/dataset.html#download) [[project page]](http://semantic-kitti.org/index.html) [[results]](https://competitions.codalab.org/competitions/20331#results)
-- Toronto-3D(CVPRW2020)[[paper]](https://arxiv.org/pdf/1904.01416) [[data]](http://semantic-kitti.org/dataset.html#download) [[project page]](http://semantic-kitti.org/index.html) [[results]](https://competitions.codalab.org/competitions/20331#results)
-- DALES(CVPRW2020)[[paper]](https://arxiv.org/pdf/1904.01416) [[data]](http://semantic-kitti.org/dataset.html#download) [[project page]](http://semantic-kitti.org/index.html) [[results]](https://competitions.codalab.org/competitions/20331#results)
+- Toronto-3D(CVPRW2020)[[paper]](https://github.com/lizhangjie316/3D-Point-Cloud-Semantic-Segement-Paper/blob/master/Dataset-Paper/Tan_Toronto-3D_A_Large-Scale_Mobile_LiDAR_Dataset_for_Semantic_Segmentation_of_CVPRW_2020_paper.pdf) [[data]](https://1drv.ms/u/s!Amlc6yZnF87psX6hKS8VOQllVvj4?e=yWhrYX) [[project page]](https://github.com/WeikaiTan/Toronto-3D)[[results]](#)   未完成...
+  - 这是一个大型的城市户外点云数据集，该数据集由加拿大多伦多的移动激光扫描系统(MLS)获取，用于语义分割。 该数据集覆盖约1 km的点云，由约7830万个点和8个标记的对象类组成。 进行了语义分割的基准实验。
+- DALES(CVPRW2020)[[paper]](https://github.com/lizhangjie316/3D-Point-Cloud-Semantic-Segement-Paper/blob/master/Dataset-Paper/Varney_DALES_A_Large-Scale_Aerial_LiDAR_Data_Set_for_Semantic_Segmentation_CVPRW_2020_paper.pdf) [[data]](https://docs.google.com/forms/d/e/1FAIpQLSe3IaTxCS7wKH01SHn_o7U86ToIw9K26vc0bkwiELn6wwh8gg/viewform) [[project page]](https://udayton.edu/engineering/research/centers/vision_lab/research/was_data_analysis_and_processing/dale.php) [[results]](#)
+  - 这是一个新的大规模航空激光雷达数据集，有超过5亿个手标点，覆盖了10  $2^10$ $km^2$ 的面积和8个目标类别。航空激光扫描仪(ALS)采集的点云数据在三维城市建模和大规模监视等领域提出了一系列新的挑战和应用。
+  - 数据集被预先划分为29个训练文件和11个测试文件，其类别如下：地面（1），植被（2），汽车（3），卡车（4），电线（5），围栏（6） ），电线杆（7）和建筑物（8）。
+  - The original annotated LAS files can be downloaded [here](https://drive.google.com/file/d/1VKm05i-4fIi7xtws668LSmECbZTbvbEm/view?usp=sharing) (~4G). The [txt files](https://drive.google.com/file/d/1dCYRFBwxsi7c8SZRHyZIObfyEzdl9sVS/view?usp=sharing) (~3.5G) and [ply files](https://drive.google.com/file/d/1kNQygxgOABrxQXDlxpv5poHTkXkhKrAn/view?usp=sharing)(~4.5G) are also avaliable.
 
 ![image-20200727195450821](https://cdn.jsdelivr.net/gh/lizhangjie316/img/2020/20200727195450.png)
 
