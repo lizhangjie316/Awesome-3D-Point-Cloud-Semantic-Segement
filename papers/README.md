@@ -1,3 +1,39 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Deep Learning for 3D Point Clouds: A Survey](#deep-learning-for-3d-point-clouds-a-survey)
+- [Abstract](#abstract)
+- [1. INTRODUCTION](#1-introduction)
+- [2 3D形状分类](#2-3d%E5%BD%A2%E7%8A%B6%E5%88%86%E7%B1%BB)
+  - [2.1基于投影的网络](#21%E5%9F%BA%E4%BA%8E%E6%8A%95%E5%BD%B1%E7%9A%84%E7%BD%91%E7%BB%9C)
+    - [2.1.1多视图表示](#211%E5%A4%9A%E8%A7%86%E5%9B%BE%E8%A1%A8%E7%A4%BA)
+    - [2.1.2体素表示](#212%E4%BD%93%E7%B4%A0%E8%A1%A8%E7%A4%BA)
+  - [2.2 基于点的网络](#22-%E5%9F%BA%E4%BA%8E%E7%82%B9%E7%9A%84%E7%BD%91%E7%BB%9C)
+    - [2.2.1逐点MLP网络](#221%E9%80%90%E7%82%B9mlp%E7%BD%91%E7%BB%9C)
+    - [2.2.2 基于卷积的网络](#222-%E5%9F%BA%E4%BA%8E%E5%8D%B7%E7%A7%AF%E7%9A%84%E7%BD%91%E7%BB%9C)
+    - [2.2.3 基于图的网络](#223-%E5%9F%BA%E4%BA%8E%E5%9B%BE%E7%9A%84%E7%BD%91%E7%BB%9C)
+    - [2.2.4 基于数据索引的网络](#224-%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E7%B4%A2%E5%BC%95%E7%9A%84%E7%BD%91%E7%BB%9C)
+    - [2.2.5 其他网络](#225-%E5%85%B6%E4%BB%96%E7%BD%91%E7%BB%9C)
+- [3 3D目标检测和跟踪](#3-3d%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%92%8C%E8%B7%9F%E8%B8%AA)
+  - [3.1 3D对象检测](#31-3d%E5%AF%B9%E8%B1%A1%E6%A3%80%E6%B5%8B)
+    - [3.1.1 基于区域提案的方法](#311-%E5%9F%BA%E4%BA%8E%E5%8C%BA%E5%9F%9F%E6%8F%90%E6%A1%88%E7%9A%84%E6%96%B9%E6%B3%95)
+    - [3.1.2 single-shot方法](#312-single-shot%E6%96%B9%E6%B3%95)
+  - [3.2 3D对象跟踪](#32-3d%E5%AF%B9%E8%B1%A1%E8%B7%9F%E8%B8%AA)
+  - [3.3 3D场景流估计](#33-3d%E5%9C%BA%E6%99%AF%E6%B5%81%E4%BC%B0%E8%AE%A1)
+  - [3.4 总结](#34-%E6%80%BB%E7%BB%93)
+- [4 3D 点云分割](#4-3d-%E7%82%B9%E4%BA%91%E5%88%86%E5%89%B2)
+  - [4.1 3D 语义分割](#41-3d-%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2)
+    - [4.1.1基于投影的网络](#411%E5%9F%BA%E4%BA%8E%E6%8A%95%E5%BD%B1%E7%9A%84%E7%BD%91%E7%BB%9C)
+    - [4.1.2基于点的网络](#412%E5%9F%BA%E4%BA%8E%E7%82%B9%E7%9A%84%E7%BD%91%E7%BB%9C)
+  - [4.2 实例分割](#42-%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2)
+  - [4.3 零件分割](#43-%E9%9B%B6%E4%BB%B6%E5%88%86%E5%89%B2)
+  - [4.4 总结](#44-%E6%80%BB%E7%BB%93)
+- [5 总结](#5-%E6%80%BB%E7%BB%93)
+- [REFERENCES](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Deep Learning for 3D Point Clouds: A Survey
 
 Y ulan Guo∗, Hanyun Wang∗, Qingyong Hu∗, Hao Liu∗, Li Liu, and Mohammed Bennamoun  **2019.12**
@@ -22,7 +58,7 @@ Y ulan Guo∗, Hanyun Wang∗, Qingyong Hu∗, Hao Liu∗, Li Liu, and Mohammed 
 
 ​		三维数据通常可以用不同的格式表示，包括深度图像、点云、网格和体积栅格。点云表示作为一种常用的表示格式，在三维空间中不需要任何离散化就可以保持原有的几何信息。因此，它是许多场景理解相关应用(如自动驾驶和机器人)的首选表示。近年来，深度学习技术在计算机视觉、语音识别、自然语言处理、生物信息学等领域占据主导地位。然而，三维点云的深度学习仍然面临着一些重大的挑战[5]，如数据集规模小、高维和三维点云的非结构化性质。在此基础上，重点分析了用于处理三维点云的深度学习方法。
 
- 	   点云的深度学习越来越受到人们的关注，特别是近五年来，点云的深度学习受到了越来越多的关注。还发布了几个公开可用的数据集，如ModelNet[6]、ShapeNet[7]、ScanNet[8]、Semanti3D[9]和Kitti  Vision Benchmark  Suite[10]。这些数据集进一步推动了三维点云深度学习的研究，越来越多的方法被提出来解决与点云处理相关的各种问题，包括三维形状分类、三维目标检测与跟踪、三维点云分割。关于3D数据的深度学习的调查也很少，例如[11]、[12]、[13]、[14]。然而，我们的论文是第一篇专门针对点云深度学习方法的论文。此外，本文还全面涵盖了分类、检测、跟踪和分割等不同的应用。三维点云现有深度学习方法的分类如图1所示。
+​        点云的深度学习越来越受到人们的关注，特别是近五年来，点云的深度学习受到了越来越多的关注。还发布了几个公开可用的数据集，如ModelNet[6]、ShapeNet[7]、ScanNet[8]、Semanti3D[9]和Kitti  Vision Benchmark  Suite[10]。这些数据集进一步推动了三维点云深度学习的研究，越来越多的方法被提出来解决与点云处理相关的各种问题，包括三维形状分类、三维目标检测与跟踪、三维点云分割。关于3D数据的深度学习的调查也很少，例如[11]、[12]、[13]、[14]。然而，我们的论文是第一篇专门针对点云深度学习方法的论文。此外，本文还全面涵盖了分类、检测、跟踪和分割等不同的应用。三维点云现有深度学习方法的分类如图1所示。
 
 ![image-20200422112530030](https://cdn.jsdelivr.net/gh/lizhangjie316/img/2020/20200422112531.png)
 

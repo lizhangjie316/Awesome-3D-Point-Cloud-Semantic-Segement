@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [RandLA-Net: Efficient Semantic Segmentation of Large-Scale Point Clouds](#randla-net-efficient-semantic-segmentation-of-large-scale-point-clouds)
+  - [[TOC]](#toc)
+- [2. 相关工作](#2-%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C)
+- [3. RandLA-Net](#3-randla-net)
+  - [3.1 随机采样的有效性](#31-%E9%9A%8F%E6%9C%BA%E9%87%87%E6%A0%B7%E7%9A%84%E6%9C%89%E6%95%88%E6%80%A7)
+  - [3.2 局部特征聚合模块](#32-%E5%B1%80%E9%83%A8%E7%89%B9%E5%BE%81%E8%81%9A%E5%90%88%E6%A8%A1%E5%9D%97)
+- [4. Experiments](#4-experiments)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # RandLA-Net: Efficient Semantic Segmentation of Large-Scale Point Clouds
 
 CVPR2020   牛津大学、中山大学、国防科技大学
