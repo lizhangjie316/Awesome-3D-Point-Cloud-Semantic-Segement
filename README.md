@@ -19,10 +19,10 @@
   - [1.4.3 基于RNN的方法](#143-基于rnn的方法)
   - [1.4.4 基于图的方法](#144-基于图的方法)
   - [1.4.5 其它方法](#145-其它方法)
-- [3. 常用Benchmark DataSet](#3-常用benchmark-dataSet)
 - [2. 评价指标](#2-评价指标)
 	- [Public Datasets](#public-datasets)
 	- [Benchmark Results](#benchmark-results) 
+- [3. 常用Benchmark DataSet](#3-常用benchmark-dataSet)
 - [4. 存在的问题](#4-存在的问题)
 
 ---
@@ -39,13 +39,15 @@
 
 ​		这些方法通常将三维点云投影到二维图像中，包括多视图和球形图像。总体而言，多视图分割方法的性能对视点选择和遮挡非常敏感。并且这些方法没有充分利用底层的几何和结构信息，因此投影步骤不可避免地会引入信息损失。与单视图投影相比，球面投影保留了更多的信息，适合于激光雷达点云的标注。但是，此中间表示法不可避免地会带来离散化、误差和遮挡等问题。
 
-<img src="https://cdn.jsdelivr.net/gh/lizhangjie316/img/2020/20200903100119.png" alt="image-20200903100108967" style="zoom:100%;" />
+
 
 ### 1.1.1 多视图表示
 
 - Lawin等人的研究成果。[181]首先将3D点云从多个虚拟相机视图投影到2D平面。然后，使用多流FCN对合成图像进行像素级分数预测。通过融合不同视图上的重新投影分数来获得每个点的最终语义标签。
 - Boulch等人。[182]首先使用多个相机位置生成点云的多个RGB和深度快照。然后，他们使用2D分割网络对这些快照进行像素级标记。使用残差校正进一步融合从RGB和深度图像预测的分数[192]。
 - 基于点云是从局部欧几里得曲面采样的假设，Tatarchenko等人。[193]引入了用于密集点云分割的切线卷积。此方法首先将每个点周围的局部曲面几何体投影到虚拟切线平面。然后直接在曲面几何体上操作切线卷积。该方法具有很强的可扩展性，能够处理几百万个点的大规模点云。
+
+<img src="https://cdn.jsdelivr.net/gh/lizhangjie316/img/2020/20200903100119.png" alt="image-20200903100108967" style="zoom:100%;" />
 
 ### 1.1.2 球形表示(球面投影)
 
@@ -54,6 +56,10 @@
 - 为了进一步提高分割精度，引入了SqueezeSegV2[184]，通过使用无监督的域自适应流水线来解决域偏移问题。
 
 - Milioto等人。[185]提出了基于RangeNet++的激光雷达点云实时语义分割方法。首先将二维深度图像的语义标签转换为三维点云，然后采用一种高效的基于GPU的基于KNN的后处理步骤来缓解离散化误差和推理输出模糊的问题。
+
+  
+  
+  
 
   ![image-20200903100432550](https://cdn.jsdelivr.net/gh/lizhangjie316/img/2020/20200903100434.png)
 
@@ -108,21 +114,20 @@
 
 ​		为了高效获取逐点特征，这些方法通常使用共享MLP作为其网络的基本单元，但共享MLP提取的点特征不能捕获点云的局部几何形状和点之间的相互作用。为了获取每个点更广泛的上下文并学习更丰富的局部结构，我们引入了一些专用网络，包括基于**邻近特征池化**、**基于注意力的聚集**和**基于局部-全局特征连接**的方法。
 
-- 临近特征池化
-
-- 基于注意力的聚合
-- 基于局部-全局特征连接
+- [临近特征池化](#临近特征池化)
+- [基于注意力的聚合](#基于注意力的聚合)
+- [基于局部-全局特征连接](#基于局部-全局特征连接)
 
 #### 临近特征池化
 
 ​		为了获取局部几何模式，通过对局部邻近点的信息进行聚合来获得每个点的特征。
 
-- **Pointnet++[论文地址54]**对点进行分层分组（即球查询），逐步从更大的局部区域进行学习。**todo：添加Pointnet++的网络结构图**  针对点云的不均匀性和密度变化等问题，提出了多尺度和多分辨率的聚类方法。   ？？？是++么？
-- **PointSIFT[论文地址141]**提出了一个PointSIFT模块来实现方向编码和尺度感知。该模块通过three-stage有序卷积将八个空间方向的信息堆叠并编码，多尺度特征被连接在一起以实现对不同尺度的自适应。
-- **Engelmann等[204]**利用K-means聚类和**KNN**分别定义了世界空间和特征空间中的两个邻域。代替了PointNet++中的球查询。基于来自同一类的点在特征空间中更接近的这一假设，引入**pairwise distance loss（双距离损失）**和**centroid loss（质心损失）**来进一步规范特征学习。
-- 为了对不同点之间的相互作用进行建模，**Zhao等[57]**提出了**PointWeb**，通过密集地构建一个局部全连接的web来**探索一个局部区域内所有对点之间的关系**。**pairs of points是什么？**提出了一种**自适应特征调整(AFA)模块**来实现信息交换和特征细化。这种聚合操作有助于网络学习一种有区别的特征表示。
-- **Zhang等人[205]**提出了一种基于同心球壳统计量的**置换不变卷积**Shellconv。该方法首先查询一组多尺度的同心球体，然后在不同的shell中使用max-pooling操作来汇总统计？使用MLPs和1D卷积得到最终的卷积输出。
-- **RandLA-Net[206]**是一种高效、轻量级的用于大规模点云分割的网络。利用随机点采样（Random Sampling），在内存和计算方面取得了非常高的效率。进一步提出了一种局部特征聚合模块（LFA）来捕获和保存几何特征。
+- Pointnet++[论文地址54]对点进行分层分组（即球查询），逐步从更大的局部区域进行学习。针对点云的不均匀性和密度变化等问题，提出了多尺度和多分辨率的聚类方法。
+- PointSIFT[论文地址141]提出了一个PointSIFT模块来实现方向编码和尺度感知。该模块通过three-stage有序卷积将八个空间方向的信息堆叠并编码，多尺度特征被连接在一起以实现对不同尺度的自适应。
+- Engelmann等[204]利用K-means聚类和KNN分别定义了世界空间和特征空间中的两个邻域。代替了PointNet++中的球查询。基于来自同一类的点在特征空间中更接近的这一假设，引入pairwise distance loss（双距离损失）和centroid loss（质心损失）来进一步规范特征学习。
+- 为了对不同点之间的相互作用进行建模，Zhao等[57]提出了PointWeb，通过密集地构建一个局部全连接的web来探索一个局部区域内所有对点之间的关系。提出了一种自适应特征调整(AFA)模块来实现信息交换和特征细化。这种聚合操作有助于网络学习一种有区别的特征表示。
+- Zhang等人[205]提出了一种基于同心球壳统计量的置换不变卷积Shellconv。该方法首先查询一组多尺度的同心球体，然后在不同的shell中使用max-pooling操作来汇总统计？使用MLPs和1D卷积得到最终的卷积输出。
+- RandLA-Net[206]是一种高效、轻量级的用于大规模点云分割的网络。利用随机点采样（Random Sampling），在内存和计算方面取得了非常高的效率。进一步提出了一种局部特征聚合模块（LFA）来捕获和保存几何特征。
 
 #### 基于注意力的聚合
 
@@ -201,22 +206,12 @@ MAP(mean Average Precision) : 平均精度均值 ,长用于3D点云实例分割�
   - _reduced-8_ [[data]](http://www.semantic3d.net/view_dbase.php?chl=2#download) [[results]](http://www.semantic3d.net/view_results.php?chl=2)
 - Paris-Lille-3D (IJRR'18) [[paper]](https://arxiv.org/pdf/1712.00032) [[data]](https://cloud.mines-paristech.fr/index.php/s/JhIxgyt0ALgRZ1O) [[project page]](http://npm3d.fr/) [[results]](http://npm3d.fr/paris-lille-3d) 
 - SemanticKITTI (ICCV'19) [[paper]](https://arxiv.org/pdf/1904.01416) [[data]](http://semantic-kitti.org/dataset.html#download) [[project page]](http://semantic-kitti.org/index.html) [[results]](https://competitions.codalab.org/competitions/20331#results)
-- Toronto-3D(CVPRW2020)[[paper]](https://github.com/lizhangjie316/3D-Point-Cloud-Semantic-Segement-Paper/blob/master/Dataset-Paper/Tan_Toronto-3D_A_Large-Scale_Mobile_LiDAR_Dataset_for_Semantic_Segmentation_of_CVPRW_2020_paper.pdf) [[data]](https://1drv.ms/u/s!Amlc6yZnF87psX6hKS8VOQllVvj4?e=yWhrYX) [[project page]](https://github.com/WeikaiTan/Toronto-3D)[[results]](#)   未完成...
-  - 这是一个大型的城市户外点云数据集，该数据集由加拿大多伦多的移动激光扫描系统(MLS)获取，用于语义分割。 该数据集覆盖约1 km的点云，由约7830万个点和8个标记的对象类组成。 进行了语义分割的基准实验。
-- DALES(CVPRW2020)[[paper]](https://github.com/lizhangjie316/3D-Point-Cloud-Semantic-Segement-Paper/blob/master/Dataset-Paper/Varney_DALES_A_Large-Scale_Aerial_LiDAR_Data_Set_for_Semantic_Segmentation_CVPRW_2020_paper.pdf) [[data]](https://docs.google.com/forms/d/e/1FAIpQLSe3IaTxCS7wKH01SHn_o7U86ToIw9K26vc0bkwiELn6wwh8gg/viewform) [[project page]](https://udayton.edu/engineering/research/centers/vision_lab/research/was_data_analysis_and_processing/dale.php) [[results]](#)
-  - 这是一个新的大规模航空激光雷达数据集，有超过5亿个手标点，覆盖了10  $2^10$ $km^2$ 的面积和8个目标类别。航空激光扫描仪(ALS)采集的点云数据在三维城市建模和大规模监视等领域提出了一系列新的挑战和应用。
-  - 数据集被预先划分为29个训练文件和11个测试文件，其类别如下：地面（1），植被（2），汽车（3），卡车（4），电线（5），围栏（6） ），电线杆（7）和建筑物（8）。
-  - The original annotated LAS files can be downloaded [here](https://drive.google.com/file/d/1VKm05i-4fIi7xtws668LSmECbZTbvbEm/view?usp=sharing) (~4G). The [txt files](https://drive.google.com/file/d/1dCYRFBwxsi7c8SZRHyZIObfyEzdl9sVS/view?usp=sharing) (~3.5G) and [ply files](https://drive.google.com/file/d/1kNQygxgOABrxQXDlxpv5poHTkXkhKrAn/view?usp=sharing)(~4.5G) are also avaliable.
+- Toronto-3D(CVPRW2020)[[paper]](https://github.com/lizhangjie316/3D-Point-Cloud-Semantic-Segement-Paper/blob/master/Dataset-Paper/Tan_Toronto-3D_A_Large-Scale_Mobile_LiDAR_Dataset_for_Semantic_Segmentation_of_CVPRW_2020_paper.pdf) [[data]](https://1drv.ms/u/s!Amlc6yZnF87psX6hKS8VOQllVvj4?e=yWhrYX) [[project page]](https://github.com/WeikaiTan/Toronto-3D)[[无results]](#)
+- DALES(CVPRW2020)[[paper]](https://github.com/lizhangjie316/3D-Point-Cloud-Semantic-Segement-Paper/blob/master/Dataset-Paper/Varney_DALES_A_Large-Scale_Aerial_LiDAR_Data_Set_for_Semantic_Segmentation_CVPRW_2020_paper.pdf) [[data]](https://docs.google.com/forms/d/e/1FAIpQLSe3IaTxCS7wKH01SHn_o7U86ToIw9K26vc0bkwiELn6wwh8gg/viewform) [[project page]](https://udayton.edu/engineering/research/centers/vision_lab/research/was_data_analysis_and_processing/dale.php) [[无results]](#)
 
 ![image-20200727195450821](https://cdn.jsdelivr.net/gh/lizhangjie316/img/2020/20200727195450.png)
 
 对于3D点云分割，这些数据集由不同类型的传感器获取，包括移动激光扫描仪(MLS)[15]、[34]、[36]、空中激光扫描仪(ALS)[33]、[38]、静态陆地激光扫描仪(TLS)[12]、RGBD相机[11]和其他3D扫描仪[10]。这些数据集可用于开发各种挑战的算法，包括相似干扰、形状不完整和类别不平衡。
-
-## DataSet简介
-
-- Semantic3D 
-
-
 
 
 
@@ -240,12 +235,12 @@ MAP(mean Average Precision) : 平均精度均值 ,长用于3D点云实例分割�
 
 # 论文引用
 
-- 暂时可以去参考文献1中去查看
+- 由于引用过多，如果需要暂时可以去参考文献1中去查看
 
 ---
 
 # 参考文献
 
 1. [Deep Learning for 3D Point Clouds：A Survey_20200727版](https://github.com/lizhangjie316/3D-Point-Cloud-Semantic-Segement-Paper/blob/master/papers/Deep%20Learning%20for%203D%20Point%20Clouds%EF%BC%9AA%20Survey_20200727%E7%89%88.pdf)
-2. [SoTA-Point-Cloud](https://github.com/QingyongHu/SoTA-Point-Cloud)
+2. [https://github.com/QingyongHu/SoTA-Point-Cloud](https://github.com/QingyongHu/SoTA-Point-Cloud)
 
