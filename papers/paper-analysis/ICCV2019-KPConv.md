@@ -11,9 +11,9 @@
   - rigid convolutions
   - deformable convolutions
 
-## 作者想法
+## 思想
 
-- 直接对点
+- 直接对点进行卷积提取特征，但在提取特征过程中要解决如何构建卷积的问题，
 
 # 1. 背景
 
@@ -63,7 +63,7 @@ rigid KPConv在Scannet与Semantic3D中表现比deformable KPConv好，分析原�
 
 ![image-20200915105256259](img/image-20200915105256259.png)
 
-### 
+
 
 
 ## 3.4 消融实验
@@ -114,7 +114,7 @@ rigid KPConv在Scannet与Semantic3D中表现比deformable KPConv好，分析原�
 # 参考
 
 1. [Project page]( https:// github.com/ HuguesTHOMAS/ KPConv) from github.
-2. []()
+2. [KPConv：点云核心点卷积 (ICCV 2019)](https://zhuanlan.zhihu.com/p/92244933) from 知乎.
 3. []()
 4. []()
 5. []()
