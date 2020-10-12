@@ -102,7 +102,17 @@
 
 下图给出了一些关键集和最大集的样例：
 
+
+
+
+
+<center > 
+    <img src="https://cdn.jsdelivr.net/gh/lizhangjie316/img/2020/20201012093959.webp" />
+</center>
+
 ![](https://cdn.jsdelivr.net/gh/lizhangjie316/img/2020/20201012093959.webp)
+
+
 
 
 # 3. 实验
