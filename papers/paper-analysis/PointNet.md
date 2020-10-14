@@ -110,8 +110,6 @@
     <img src="https://cdn.jsdelivr.net/gh/lizhangjie316/img/2020/20201012093959.webp" />
 </div>
 
-![](https://cdn.jsdelivr.net/gh/lizhangjie316/img/2020/20201012093959.webp)
-
 
 
 
