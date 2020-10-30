@@ -1,14 +1,9 @@
-汇总3D点云语义分割论文
+# 汇总3D点云语义分割论文
 
 
-
-
-> 
 
 
 参考来源：https://github.com/Yochengliu/awesome-point-cloud-analysis
-
-> 
 
 ```diff
 - Recent papers (from 2017)
@@ -78,6 +73,9 @@ Statistics: :fire: code is available & stars >= 100 &emsp;|&emsp; :star: citatio
 - [[arXiv](https://arxiv.org/abs/1807.00652)] PointSIFT: A SIFT-like Network Module for 3D Point Cloud Semantic Segmentation. [[tensorflow](https://github.com/MVIG-SJTU/pointSIFT)] [__`seg.`__] :fire:
 - [[arXiv](https://arxiv.org/abs/1811.11209)] Iterative Transformer Network for 3D Point Cloud. [__`cls.`__ __`seg.`__ __`pos.`__]
 - [[arXiv](https://arxiv.org/abs/1812.11029)] Multi-column Point-CNN for Sketch Segmentation. [__`seg.`__]
+
+---
+- [[arXiv](https://arxiv.org/abs/1810.01151)] Know What Your Neighbors Do: 3D Semantic Segmentation of Point Clouds. [__`seg.`__]
 
 
 
