@@ -2,8 +2,11 @@
 
 
 
+参考来源：
 
-参考来源：https://github.com/Yochengliu/awesome-point-cloud-analysis
+1、https://github.com/Yochengliu/awesome-point-cloud-analysis
+
+2、[awesome-point-cloud-analysis-2021: A list of papers and datasets about point cloud analysis (processing) since 2017.](https://github.com/NUAAXQ/awesome-point-cloud-analysis-2021#2021)
 
 ```diff
 - Recent papers (from 2017)
@@ -208,8 +211,6 @@ Statistics: :fire: code is available & stars >= 100 &emsp;|&emsp; :star: citatio
 - [[ECCV](http://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123720494.pdf)] Efficient Outdoor 3D Point Cloud Semantic Segmentation for Critical Road Objects and Distributed Contexts. [__`Segmentation`__]
 - [[ECCV](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123690630.pdf)] Deep FusionNet for Point Cloud Semantic Segmentation. [[code](https://github.com/feihuzhang/LiDARSeg)] [__`Segmentation`__]
 - [[ECCV](https://arxiv.org/abs/2004.01803)] SqueezeSegV3: Spatially-Adaptive Convolution for Efficient Point-Cloud Segmentation. [[code](https://github.com/chenfengxu714/SqueezeSegV3)] [__`seg.`__]
-
-
 
 - [[IROS](https://arxiv.org/abs/2011.00988)] PBP-Net: Point Projection and Back-Projection Network for 3D Point Cloud Segmentation. [__`Segmentation `__]
 - [[IROS](http://ras.papercept.net/images/temp/IROS/files/0144.pdf)] RegionNet: Region-feature-enhanced 3D Scene Understanding Network with Dual Spatial-aware Discriminative Loss. [__`Segmentation `__]
