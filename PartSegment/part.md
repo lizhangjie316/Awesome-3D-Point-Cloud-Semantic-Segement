@@ -31,9 +31,27 @@
 
 ## 2.1、shapenet part dataset
 
-> 介绍：
->
-> 
+[点云数据集_zhulf0804的博客-CSDN博客](https://blog.csdn.net/zhulf0804/article/details/108609629#:~:text=ShapeNet Part是从ShapeNetCore数据集选择了16类并进行语义信息标注的数据集%2C 用于点云的语义分割任务%2C 其数据集发表于 A Scalable Active Framework,Shape Collections [SIGGRAPH Asia 2016]%2C 官方主页为 ShapeNet Part.)
+
+ShapeNet数据集是一个有丰富标注的、大规模的3D图像数据集, 发布于ShapeNet: An Information-Rich 3D Model Repository [arXiv 2015], 它是普林斯顿大学、斯坦福大学和TTIC研究人员共同努力的结果, 官方主页为shapenet.org.ShapeNet包括ShapeNetCore和ShapeNetSem子数据集.
+
+**ShapeNet Part是从ShapeNetCore数据集选择了16类并进行语义信息标注的数据集**, 用于点云的语义分割任务, 其数据集发表于A Scalable Active Framework for Region Annotation in 3D Shape Collections [SIGGRAPH Asia 2016], 官方主页为 ShapeNet Part. 数据包含几个不同的版本, 其下载链接分别为**shapenetcore_partanno_v0.zip (1.08G)**和s**hapenetcore_partanno_segmentation_benchmark_v0.zip(635M)**. 
+
+下面就第2个数据集segmentation benchmark进行介绍:<font color='red'> (**平时我们所使用的数据集**)</font>
+从下面表格可以看出**, ShapeNet Part总共有16类,50个parts，总共包括16846个样本。**该数据集中样本呈现出不均衡特性，比如Table包括5263个, 而Earphone只有69个。每个样本包含2000多个点, 属于小数据集。该数据集中训练集12137个, 验证集1870个, 测试集2874个, **总计16881个（有重复，16846才正确）**。[注意, 这里和下面表格统计的(16846)并不一样, 后来发现是训练集、验证集和测试集有35个重复的样本]
+
+
+
+![image-20210604101230301](img/image-20210604101230301.png)
+
+
+
+
+
+
+
+
+
 
 ![image-20210513223553128](img/image-20210513223553128.png)
 
@@ -41,7 +59,7 @@
 
 ![image-20210514083425046](img/image-20210514083425046.png)
 
-![image-20210515173416200](img/image-20210515173416200.png)
+
 
 ![image-20210514090539690](img/image-20210514090539690.png)
 
@@ -51,7 +69,103 @@
 
 ![image-20210516104318229](img/image-20210516104318229.png)
 
+![image-20210515173416200](img/image-20210515173416200.png)
 
+![image-20210604093101482](img/image-20210604093101482.png)
+
+
+
+### 2.1.1 评价指标：
+
+- 输出实例
+
+```python
+2021-06-04 23:31:12,172 - Model - INFO - Epoch 251 (251/251):
+2021-06-04 23:31:12,172 - Model - INFO - Learning rate:0.000010
+2021-06-04 23:43:04,485 - Model - INFO - Train accuracy is: 0.95584
+2021-06-04 23:44:57,128 - Model - INFO - eval mIoU of Airplane       0.828985
+2021-06-04 23:44:57,129 - Model - INFO - eval mIoU of Bag            0.813650
+2021-06-04 23:44:57,129 - Model - INFO - eval mIoU of Cap            0.870234
+2021-06-04 23:44:57,129 - Model - INFO - eval mIoU of Car            0.774450
+2021-06-04 23:44:57,129 - Model - INFO - eval mIoU of Chair          0.903383
+2021-06-04 23:44:57,129 - Model - INFO - eval mIoU of Earphone       0.734245
+2021-06-04 23:44:57,129 - Model - INFO - eval mIoU of Guitar         0.911734
+2021-06-04 23:44:57,129 - Model - INFO - eval mIoU of Knife          0.864292
+2021-06-04 23:44:57,129 - Model - INFO - eval mIoU of Lamp           0.837112
+2021-06-04 23:44:57,129 - Model - INFO - eval mIoU of Laptop         0.957848
+2021-06-04 23:44:57,129 - Model - INFO - eval mIoU of Motorbike      0.710170
+2021-06-04 23:44:57,129 - Model - INFO - eval mIoU of Mug            0.950811
+2021-06-04 23:44:57,129 - Model - INFO - eval mIoU of Pistol         0.814806
+2021-06-04 23:44:57,129 - Model - INFO - eval mIoU of Rocket         0.617824
+2021-06-04 23:44:57,129 - Model - INFO - eval mIoU of Skateboard     0.768687
+2021-06-04 23:44:57,129 - Model - INFO - eval mIoU of Table          0.822945
+2021-06-04 23:44:57,129 - Model - INFO - Epoch 251 test Accuracy: 0.943103  Class avg mIOU: 0.823823   Inctance avg mIOU: 0.849895
+2021-06-04 23:44:57,129 - Model - INFO - Best accuracy is: 0.94395
+2021-06-04 23:44:57,129 - Model - INFO - Best class avg mIOU is: 0.82726
+2021-06-04 23:44:57,129 - Model - INFO - Best inctance avg mIOU is: 0.85323
+```
+
+- 计算每个类别的iou
+
+```python
+for cat in sorted(shape_ious.keys()):  # 对应的每种类别的mIoU
+    log_string('eval mIoU of %s %f' % (cat + ' ' * (14 - len(cat)), shape_ious[cat]))
+```
+
+
+
+#### （1）平均实例IoU
+
+- **别名：**
+
+instance mIoU、pIoU（part IoU）、mIoU、mean
+
+- test_metrics['instance_avg_iou'] : 平均实例IOU
+
+```python
+all_shape_ious = []  # 代表的是2874个test数据集中，每个样本点云的正确率
+
+for cat in shape_ious.keys():  # 计算所有shape的部件 实例iou
+    for iou in shape_ious[cat]:
+        all_shape_ious.append(iou)
+    shape_ious[cat] = np.mean(shape_ious[cat])
+
+test_metrics['instance_avg_iou'] = np.mean(all_shape_ious)
+# 先将所有类别所有样本的准确率取出来，存到all_shape_ious中，再取平均
+```
+
+![image-20210607074138540](img/image-20210607074138540.png)
+
+![image-20210608163533472](img/image-20210608163533472.png)
+
+
+
+#### （2）平均类别IoU
+
+别名：class mIoU、cat. mIoU、mcIoU
+
+- test_metrics['class_avg_iou']  
+
+mean_shape_ious = np.mean(shape_ious)    对所有值求平均，获得一个值，也就是 **平均类别IOU**
+
+```python
+mean_shape_ious = np.mean(list(shape_ious.values()))
+test_metrics['class_avg_iou'] = mean_shape_ious
+# 直接对所有类别求平均
+```
+
+![image-20210608160518731](img/image-20210608160518731.png)
+
+
+
+#### （3）准确率
+
+- test_metrics['accuracy']
+
+```python
+# 正确的总点数/可见的总点数
+test_metrics['accuracy'] = total_correct / float(total_seen)  # 5265761/5885952
+```
 
 
 

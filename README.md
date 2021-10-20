@@ -18,7 +18,7 @@
 - [2018](#2018)
 - [2019](#2019)
 - [2020](#2020) [CVPR: 70 papers; ECCV: 39 papers]
-- [2021](#2021) [CVPR: 60 paper]
+- [2021](#2021) [CVPR: 18/60 paper; ICCV: 10/39 papers]
 
 
 
@@ -247,89 +247,34 @@ Statistics: :fire: code is available & stars >= 100 &emsp;|&emsp; :star: citatio
 - [[CVPR](https://openaccess.thecvf.com/content/CVPR2021/papers/Li_Point_Cloud_Upsampling_via_Disentangled_Refinement_CVPR_2021_paper.pdf)] Point Cloud Upsampling via Disentangled Refinement. [[code](https://github.com/liruihui/Dis-PU)] [__`Upsampling`__]
 - [[CVPR](https://openaccess.thecvf.com/content/CVPR2021/papers/Zhao_Few-Shot_3D_Point_Cloud_Semantic_Segmentation_CVPR_2021_paper.pdf)] Few-shot 3D Point Cloud Semantic Segmentation. [[code](https://github.com/Na-Z/attMPTI)] [__`Segmentation`__]
 
+- 
+- [[ICCV](https://arxiv.org/abs/2108.04023)] DRINet: A Dual-Representation Iterative Learning Network for Point Cloud Segmentation. [__`Segmentation`__]
+- [[ICCV](https://arxiv.org/abs/2107.11769)] ReDAL: Region-based and Diversity-aware Active Learning for Point Cloud Semantic Segmentation. [__`Segmentation`__]
+- [[ICCV](https://arxiv.org/abs/2107.14230)] Learning with Noisy Labels for Robust Point Cloud Segmentation. [[code](https://shuquanye.com/PNAL_website/)][__`Segmentation`__]
+- [[ICCV](https://arxiv.org/abs/2108.07478)] Instance Segmentation in 3D Scenes using Semantic Superpoint Tree Networks. [[code](https://github.com/Gorilla-Lab-SCUT/SSTNet)][__`Segmentation`__]
+- [[ICCV](https://arxiv.org/abs/2108.02350)] Hierarchical Aggregation for 3D Instance Segmentation. [[code](https://github.com/hustvl/HAIS)][__`Segmentation`__]
+- [[ICCV](https://arxiv.org/abs/2012.09164)] Point Transformer. [__`Transformer`__]
+- [[ICCV](https://openaccess.thecvf.com/content/ICCV2021/papers/Zhou_TempNet_Online_Semantic_Segmentation_on_Large-Scale_Point_Cloud_Series_ICCV_2021_paper.pdf)] TempNet: Online Semantic Segmentation on Large-scale Point Cloud Series. [__`Segmentation`__]
+- [[ICCV](https://openaccess.thecvf.com/content/ICCV2021/papers/Zhang_Perturbed_Self-Distillation_Weakly_Supervised_Large-Scale_Point_Cloud_Semantic_Segmentation_ICCV_2021_paper.pdf)] Perturbed Self-Distillation: Weakly Supervised Large-Scale Point Cloud Semantic Segmentation. [__`Segmentation`__]
+- [[ICCV](https://openaccess.thecvf.com/content/ICCV2021/papers/Jiang_Guided_Point_Contrastive_Learning_for_Semi-Supervised_Point_Cloud_Semantic_Segmentation_ICCV_2021_paper.pdf)] Guided Point Contrastive Learning for Semi-Supervised Point Cloud Semantic Segmentation. [__`Segmentation`__]
+- [[ICCV](https://openaccess.thecvf.com/content/ICCV2021/papers/Hui_Superpoint_Network_for_Point_Cloud_Oversegmentation_ICCV_2021_paper.pdf)] Superpoint Network for Point Cloud Oversegmentation.[[code](https://github.com/fpthink/SPNet)] [__`Segmentation`__]
+
 
 
 ---
 
-### arXiv
+### Datasets
 
-#### 2018
-
-- [[arXiv](https://arxiv.org/abs/1807.00652)] PointSIFT: A SIFT-like Network Module for 3D Point Cloud Semantic Segmentation. [[tensorflow](https://github.com/MVIG-SJTU/pointSIFT)] [__`seg.`__] :fire:
-- [[arXiv](https://arxiv.org/abs/1811.11209)] Iterative Transformer Network for 3D Point Cloud. [__`cls.`__ __`seg.`__ __`pos.`__]
-- [[arXiv](https://arxiv.org/abs/1812.11029)] Multi-column Point-CNN for Sketch Segmentation. [__`seg.`__]
-- [[arXiv](https://arxiv.org/abs/1810.01151)] Know What Your Neighbors Do: 3D Semantic Segmentation of Point Clouds. [__`seg.`__]
-
-#### 2019
-
-- [[arxiv](https://arxiv.org/abs/1901.08396)] Context Prediction for Unsupervised Deep Learning on Point Clouds. [__`cls.`__ __`seg.`__]
-- [[arXiv](https://arxiv.org/abs/1902.05247)] 3D Graph Embedding Learning with a Structure-aware Loss Function for Point Cloud Semantic Instance Segmentation. [__`seg.`__]
-- [[arXiv](https://arxiv.org/abs/1904.00230)] MortonNet: Self-Supervised Learning of Local Features in 3D Point Clouds. [__`cls.`__ __`seg.`__]
-- [[arXiv](https://arxiv.org/pdf/1904.10014.pdf)] Linked Dynamic Graph CNN: Learning on Point Cloud via Linking Hierarchical Features. [__`cls.`__ __`seg.`__]
-- [[arXiv](https://arxiv.org/abs/1905.08705)] GAPNet: Graph Attention based Point Neural Network for Exploiting Local Feature of Point Cloud. [[tensorflow](https://github.com/FrankCAN/GAPNet)] [__`cls.`__ __`seg.`__]
-- [[arXiv](https://arxiv.org/abs/1906.01140)] Learning Object Bounding Boxes for 3D Instance Segmentation on Point Clouds. [[tensorflow](https://github.com/Yang7879/3D-BoNet)] [__`det.`__ __`seg.`__]
-- [[arXiv](https://arxiv.org/abs/1906.10887)] Spatial Transformer for 3D Points. [__`seg.`__]
-- [[arXiv](https://arxiv.org/abs/1907.03739)] Point-Voxel CNN for Efficient 3D Deep Learning. [__`seg.`__ __`det.`__ __`aut.`__]
-- [[arXiv](https://arxiv.org/pdf/1905.07650v1.pdf)] SAWNet: A Spatially Aware Deep Neural Network for 3D Point Cloud Processing. [[tensorflow](https://github.com/balwantraikekutte/SAWNet)] [__`cls.`__ __`seg.`__]
-- [[arXiv](https://arxiv.org/pdf/1906.03299.pdf)] PyramNet: Point Cloud Pyramid Attention Network and Graph Embedding Module for Classification and Segmentation. [__`cls.`__ __`seg.`__]
-- [[arXiv](https://arxiv.org/abs/1907.09798)] PointAtrousGraph: Deep Hierarchical Encoder-Decoder with Point Atrous Convolution for Unorganized 3D Points. [[tensorflow](https://github.com/paul007pl/PointAtrousGraph)] [__`cls.`__ __`seg.`__]
-- [[arXiv](https://arxiv.org/pdf/1908.11026.pdf)] Point2SpatialCapsule: Aggregating Features and Spatial Relationships of Local Regions on Point Clouds using Spatial-aware Capsules. [__`cls.`__ __`rel.`__ __`seg.`__]
-- [[arXiv](https://arxiv.org/pdf/1907.13079.pdf)] Deformable Filter Convolution for Point Cloud Reasoning. [__`seg.`__ __`det.`__ __`aut.`__]
-- [[arXiv](https://arxiv.org/pdf/1912.02984v1.pdf)] Grid-GCN for Fast and Scalable Point Cloud Learning. [__`seg.`__ __`cls.`__]
-- [[arXiv](https://arxiv.org/pdf/1911.10150.pdf)] PointPainting: Sequential Fusion for 3D Object Detection. [__`seg.`__ __`det.`__]
-- [[arXiv](https://arxiv.org/pdf/1912.10644.pdf)] Geometry Sharing Network for 3D Point Cloud Classification and Segmentation. [[pytorch](https://github.com/MingyeXu/GS-Net)] [__`cls.`__ __`seg.`__]
-- [[arvix](https://arxiv.org/abs/1912.12033)] Deep Learning for 3D Point Clouds: A Survey. [[code](https://github.com/QingyongHu/SoTA-Point-Cloud)] [__`cls.`__ __`det.`__ __`tra.`__ __`seg.`__]
-- [[arXiv](https://arxiv.org/pdf/1909.12663.pdf)] Point Attention Network for Semantic Segmentation of 3D Point Clouds. [__`seg.`__]
-
-#### 2020
-
-- [[arXiv](https://arxiv.org/pdf/2003.03653.pdf)] SalsaNext: Fast Semantic Segmentation of LiDAR Point Clouds for Autonomous Driving. [[code](https://github.com/TiagoCortinhal/SalsaNext)] [__`seg.`__]
-- [[arXiv](https://arxiv.org/pdf/2003.06233.pdf)] Feature Fusion Network Based on Attention Mechanism for 3D Semantic Segmentation of Point Clouds. [__`seg.`__]
-- [[arXiv](https://www.sciencedirect.com/science/article/abs/pii/S0925231220304070)] Multi-view Semantic Learning Network for Point Cloud Based 3D Object Detection. [__`seg.`__]
-- [[arXiv](https://arxiv.org/pdf/2003.08284.pdf)] Toronto-3D: A Large-scale Mobile LiDAR Dataset for Semantic Segmentation of Urban Roadways. [[code](https://github.com/WeikaiTan/Toronto-3D)] [__`seg.`__]
-- [[arXiv](https://arxiv.org/pdf/2003.12841.pdf)] A Benchmark for Point Clouds Registration Algorithms. [[code](https://github.com/iralabdisco/point_clouds_registration_benchmark)] [__`seg.`__]
-- [[arXiv](https://arxiv.org/pdf/2003.05420.pdf)] Bi-Directional Attention for Joint Instance and Semantic Segmentation in Point Clouds. [[pytorch](https://github.com/pumpkinnan/BAN)] [__`seg.`__]
-- [[arXiv](https://arxiv.org/pdf/2003.13926.pdf)] Scene Context Based Semantic Segmentation for 3D LiDAR Data in Dynamic Scene. [__`seg.`__]
-- [[arXiv](https://arxiv.org/abs/2004.02724)] Reconfigurable Voxels: A New Representation for LiDAR-Based Point Clouds. [__`seg.`__]
-- [[arXiv](https://arxiv.org/abs/2004.03401)] MNEW: Multi-domain Neighborhood Embedding and Weighting for Sparse Point Clouds Segmentation. [__`seg.`__]
-- **[[arXiv](https://arxiv.org/abs/2004.05224)] Deep Learning for Image and Point Cloud Fusion in Autonomous Driving: A Review. [`review.`]**
-- [[arXiv](https://arxiv.org/abs/2004.11784)] DPDist : Comparing Point Clouds Using Deep Point Cloud Distance. [__`seg.`__]
-- [[arXiv](https://arxiv.org/abs/2004.12498)] Weakly Supervised Semantic Segmentation in 3D Graph-Structured Point Clouds of Wild Scenes. [__`seg.`__]
-- [[arXiv](https://arxiv.org/abs/2005.06734)] Dense-Resolution Network for Point Cloud Classification and Segmentation.[[code](https://github.com/ShiQiu0419/DRNet)] [__`segmentation.`__]
-- [[arXiv](https://arxiv.org/abs/2005.06667)] Exploiting Multi-Layer Grid Maps for Surround-View Semantic Segmentation of Sparse LiDAR Data. [__`segmentation.`__]
-- [[arXiv](https://arxiv.org/abs/2005.09830)] Deep Learning for LiDAR Point Clouds in Autonomous Driving: A Review. [__`Review.`__]
-- [[arXiv](https://arxiv.org/abs/2006.04307)] Are We Hungry for 3D LiDAR Data for Semantic Segmentation? [__`Segmentation.`__]
-- [[arXiv](https://arxiv.org/abs/2007.08488)] Complete & Label: A Domain Adaptation Approach to Semantic Segmentation of LiDAR Point Clouds. [__`Segmentation.`__]
-- **[[arXiv](https://arxiv.org/abs/2007.08501)] Accelerating 3D Deep Learning with PyTorch3D. [`PyTorch3D.`]**
-- [[arXiv](https://arxiv.org/abs/2008.01550)] Cylinder3D: An Effective 3D Framework for Driving-scene LiDAR Semantic Segmentation. [[code](https://github.com/xinge008/Cylinder3D)] [__`Segmentation.`__]
-- **[[arXiv](https://arxiv.org/abs/2008.02986)] Global Context Aware Convolutions for 3D Point Cloud Understanding. [`Understanding.`]**
-- [[arXiv](https://arxiv.org/abs/2008.03928)] Projected-point-based Segmentation: A New Paradigm for LiDAR Point Cloud Segmentation. [__`Segmentation.`__]
-- [[arXiv](https://arxiv.org/pdf/2009.08924.pdf)] Multi-Resolution Graph Neural Network for Large-Scale Pointcloud Segmentation. [__`Segmentation`__]
-- **[[arXiv](https://arxiv.org/pdf/2009.08920.pdf)] Deep Learning for 3D Point Cloud Understanding: A Survey. [[code]( https://github.com/SHI-Labs/3D-Point-Cloud-Learning)] [`Survey`]**
-- [[arXiv](https://arxiv.org/pdf/2009.10569.pdf)] Improving Point Cloud Semantic Segmentation by Learning 3D Object Proposal Generation. [__`Segmentation`__]
-- **[[arXiv](https://arxiv.org/pdf/2009.13727.pdf)] Graph-based methods for analyzing orchard tree structure using noisy point cloud data. [` `]**
-- **[[arXiv](https://arxiv.org/pdf/2010.04642.pdf)] Torch-Points3D: A Modular Multi-Task Framework for Reproducible Deep Learning on 3D Point Clouds.[[torch]( https://github.com/nicolas-chaulet/torch-points3d)] [`Framework`]**
-- [[arXiv](https://arxiv.org/pdf/2010.09582.pdf)] Learning to Reconstruct and Segment 3D Objects. [__` Segmentation；Reconstruction`__]
-- [[arXiv](https://arxiv.org/pdf/2010.08744.pdf)] Generating Large Convex Polytopes Directly on Point Clouds. [__` Segmentation `__]
-- [[arxiv]( https://arxiv.org/pdf/2010.08092.pdf)] Human Segmentation with Dynamic LiDAR Data. [__` Segmentation`__]
-- [[arXiv](https://arxiv.org/abs/2011.00923)] MARNet: Multi-Abstraction Refinement Network for 3D Point Cloud Analysis. [[code](https://github.com/ruc98/MARNet)][__`Analysis`__]
-- **[[arXiv](https://arxiv.org/abs/2011.00931)] Point Transformer. [`Analysis`]**
-- **[[arXiv](https://arxiv.org/abs/2010.05501)] BiPointNet: Binary Neural Network for Point Clouds. [`Analysis`]**
-
-- [[arXiv](https://arxiv.org/abs/2011.12745)] Deep Magnification-Arbitrary Upsampling over 3D Point Clouds. [__`Upsampling`__]
-- [[arXiv](https://arxiv.org/abs/2011.13784)] Spherical Interpolated Convolutional Network with Distance-Feature Density for 3D Semantic Segmentation of Point Clouds.[__` Segmentation`__]
-- [[arXiv](https://arxiv.org/abs/2011.13328)] DyCo3D: Robust Instance Segmentation of 3D Point Clouds through Dynamic Convolution.[[code](https://github.com/aim-uofa/DyCo3D)] [__`Segmentation `__]
-- **[[arXiv](https://arxiv.org/pdf/2011.14285.pdf)] Deeper or Wider Networks of Point Clouds with Self-attention?[`Networks`]**
-- [[arXiv](https://arxiv.org/abs/2012.04934)] AMVNet: Assertion-based Multi-View Fusion Network for LiDAR Semantic Segmentation.[__`Segmentation`__]
-- [[arXiv](https://arxiv.org/abs/2012.05018)] vLPD-Net: A Registration-aided Domain Adaptation Network for 3D Point Cloud Based Place Recognition.[__`Registration`__]
-- [[arXiv](https://arxiv.org/abs/2012.04439)] SPU-Net: Self-Supervised Point Cloud Upsampling by Coarse-to-Fine Reconstruction with Self-Projection Optimization.[__`Upsampling`__]
-
-#### 2021
-
-- [[arXiv](https://arxiv.org/abs/2011.13328)] DyCo3D: Robust Instance Segmentation of 3D Point Clouds through Dynamic Convolution. [__`Segmentation.`__]
-- [[arXiv](https://arxiv.org/abs/2012.10217)] SegGroup: Seg-Level Supervision for 3D Instance and Semantic Segmentation. [__`Segmentation.`__]
-- [[arXiv](https://arxiv.org/ftp/arxiv/papers/2012/2012.10192.pdf)] LGENet: Local and Global Encoder Network for Semantic Segmentation of Airborne Laser Scanning Point Clouds. [__`Segmentation.`__]
-- [[arXiv](https://arxiv.org/abs/2012.09688)] PCT: Point Cloud Transformer. [__`Transformer.`__]
-- [[arXiv](https://arxiv.org/abs/2012.09793)] SceneFormer: Indoor Scene Generation with Transformers. [__`Transformer.`__]
-- [[arXiv](https://arxiv.org/abs/2101.02691)] Self-Supervised Pretraining of 3D Features on any Point-Cloud.[[pytorch](https://github.com/facebookresearch/DepthContrast)] [__`Self-Supervised.`__]
-- [[arXiv](https://arxiv.org/abs/2102.10788)] Attention Models for Point Clouds in Deep Learning: A Survey. [__`Survey.`__]
+- [[ShapeNet](https://www.shapenet.org/)]  A collaborative dataset between researchers at Princeton, Stanford and TTIC. [__`seg.`__]
+- [[PartNet](https://shapenet.org/download/parts)] The PartNet dataset provides fine grained part annotation of objects in ShapeNetCore. [__`seg.`__]
+- [[PartNet](http://kevinkaixu.net/projects/partnet.html)] PartNet benchmark from Nanjing University and National University of Defense Technology. [__`seg.`__]
+- [[S3DIS](http://buildingparser.stanford.edu/dataset.html#Download)] The Stanford Large-Scale 3D Indoor Spaces Dataset. [__`seg.`__]
+- [[ScanNet](http://www.scan-net.org/)] Richly-annotated 3D Reconstructions of Indoor Scenes. [__`cls.`__ __`seg.`__]
+- [[UWA Dataset](http://staffhome.ecm.uwa.edu.au/~00053650/databases.html)] . [__`cls.`__ __`seg.`__ __`reg.`__]
+- [[IQmulus & TerraMobilita Contest](http://data.ign.fr/benchmarks/UrbanAnalysis/#)] The database contains 3D MLS data from a dense urban environment in Paris (France), composed of 300 million points. The acquisition was made in January 2013. [__`cls.`__ __`seg.`__ __`det.`__]
+- [[WAD](http://wad.ai/2019/challenge.html)] [[ApolloScape](http://apolloscape.auto/tracking.html)] The datasets are provided by Baidu Inc. [__`tra.`__ __`seg.`__ __`det.`__]
+- [[SynthCity](https://arxiv.org/abs/1907.04758)] SynthCity is a 367.9M point synthetic full colour Mobile Laser Scanning point cloud. Nine categories. [__`seg.`__ __`aut.`__]
+- [[Lyft Level 5](https://level5.lyft.com/dataset/?source=post_page)] Include high quality, human-labelled 3D bounding boxes of traffic agents, an underlying HD spatial semantic map. [__`det.`__ __`seg.`__ __`aut.`__]
+- [[SemanticKITTI](http://semantic-kitti.org)] Sequential Semantic Segmentation, 28 classes, for autonomous driving. All sequences of KITTI odometry labeled. [[ICCV 2019 paper](https://arxiv.org/abs/1904.01416)] [__`seg.`__ __`oth.`__ __`aut.`__]
+- [[NPM3D](http://npm3d.fr/paris-lille-3d)] The Paris-Lille-3D  has been produced by a Mobile Laser System (MLS) in two different cities in France (Paris and Lille). [__`seg.`__] 
+- [[DALES](https://arxiv.org/abs/2004.11985)] DALES: A Large-scale Aerial LiDAR Data Set for Semantic Segmentation. [__`seg.`__] 
